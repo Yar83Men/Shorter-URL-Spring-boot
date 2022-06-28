@@ -16,8 +16,7 @@ public class URLEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    @Column(name = "primary_url")
-    @NotEmpty(message = "Not empty field, enter URL")
+    @Column(name = "primary_url")   
     private String primaryUrl;
 
     @Column(name = "converted_url")

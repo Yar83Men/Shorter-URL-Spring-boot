@@ -27,7 +27,7 @@ public class URLValidator implements Validator {
         Pattern pattern = Pattern.compile(regex);
         Matcher matcher = pattern.matcher(urlEntity.getPrimaryUrl());
         if (!matcher.find()) {
-            errors.rejectValue("primaryUrl", "", "Не валидный url");
+            errors.rejectValue("primaryUrl", "", "Не валидный url, повторите попытку ввода :)");
         }
     }
 }

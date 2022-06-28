@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Url shorter</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            flex-direction: column;
+        }
+    </style>
+</head>
+<body>
+<form th:method="POST" th:action="@{/}" th:object="${urlEntity}">
+    <h2>Сервис для сокращения ссылок</h2>
+    <input id="url" type="url" th:field="*{primaryUrl}" class="form-control" required/>
+    <div style="color:red;" th:if="${#fields.hasErrors('primaryUrl')}" th:errors="*{primaryUrl}">url error</div>
+    <input type="submit" value="Конвертировать" class="btn btn-outline-success btn-sm mt-3"/>
+    <button id="delete-button" class="btn btn-outline-danger btn-sm mt-3">Стереть</button>
+</form>
+
+<p class="alert alert-info mt-4">Сокращенный URL : <a th:href="${url}" th:text="${url}"></a></p>
+<script>
+    document.querySelector("#delete-button").onclick = (event) => {
+        event.preventDefault();
+        document.querySelector("#url").value = "";
+    }
+</script>
+</body>
+</html>

@@ -17,6 +17,7 @@ public class URLService {
     }
 
     public URLEntity saveUrl(URLEntity urlEntity, String primaryUrl) {
+        primaryUrl = primaryUrl.trim();
         String sha256 = DigestUtils.sha256Hex(primaryUrl);
         String convertedURL = sha256.substring(0, 4) + sha256.substring(60, 64);
         URLEntity entity = urlRepository.findByConvertedUrlOrPrimaryUrl(convertedURL, primaryUrl);

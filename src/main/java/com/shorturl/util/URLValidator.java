@@ -25,7 +25,7 @@ public class URLValidator implements Validator {
                 + "._\\+~#?&//=]*)";
         // String regex1 = "(http:\\/\\/|https:\\/\\/)?(www.)?([a-zA-Z0-9]+).[a-zA-Z0-9]*.[a-z]{3}.?([a-z]+)?";
         Pattern pattern = Pattern.compile(regex);
-        Matcher matcher = pattern.matcher(urlEntity.getPrimaryUrl().toLowerCase());
+        Matcher matcher = pattern.matcher(urlEntity.getPrimaryUrl().toLowerCase().trim());
         if (!matcher.find() || urlEntity.getPrimaryUrl().equals("")) {
             errors.rejectValue("primaryUrl", "", "Не валидный url, повторите попытку ввода :)");
         }
